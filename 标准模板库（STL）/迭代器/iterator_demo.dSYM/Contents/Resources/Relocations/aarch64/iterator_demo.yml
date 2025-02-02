@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     "/Users/stevenhao/Desktop/c++学习/标准模板库（STL）/迭代器/iterator_demo"
+relocations:     []
+...
