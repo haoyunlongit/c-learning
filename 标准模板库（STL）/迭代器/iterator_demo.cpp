@@ -37,5 +37,17 @@ int main() {
     }
     std::cout << std::endl;
 
+    /// 示例 5: 使用 auto 关键字简化迭代器的类型声明
+    std::cout << "Vector elements: ";
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        std::cout << *it << " ";
+    }
+
+    /// 示例 6: 使用范围 for 循环
+    std::cout << "Vector elements: ";
+    for (int i : vec) {
+        std::cout << i << " ";
+    }
+
     return 0;
 } 
