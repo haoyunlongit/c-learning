@@ -31,6 +31,9 @@ T add(T a, T b) {
 
 int main() {
     Box<int> intBox(123);
+
+    Box<float> floatBox(3.14f);
+
     Box<std::string> strBox("Hello");
 
     std::cout << "Int Box: " << intBox.getValue() << std::endl;
@@ -38,5 +41,6 @@ int main() {
 
     std::cout << "Add: " << add(3, 4) << std::endl;
 
+    std::cout << "float Box: " << floatBox.getValue() << std::endl;
     return 0;
 } 

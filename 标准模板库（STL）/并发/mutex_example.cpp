@@ -14,13 +14,14 @@
 
 std::mutex mtx; // 互斥锁
 int sharedCounter = 0; // 共享资源
+int number = 0;
 
 void increment(int id) {
     for (int i = 0; i < 100; ++i) {
         // 使用 lock_guard 自动管理锁的生命周期
         std::lock_guard<std::mutex> lock(mtx);
         ++sharedCounter;
-        std::cout << "Thread " << id << " incremented counter to " << sharedCounter << std::endl;
+        // std::cout << "Thread " << id << " incremented counter to " << sharedCounter << std::endl;
     }
 }
 
@@ -30,8 +31,13 @@ void decrement(int id) {
         std::unique_lock<std::mutex> lock(mtx);
         --sharedCounter;
         
-        std::cout << "Thread " << id << " decremented counter to " << sharedCounter << std::endl;
+        // std::cout << "Thread " << id << " decremented counter to " << sharedCounter << std::endl;
     }
+}
+
+void testPrint(int i) {
+    number++;
+    std::cout<< "testPrint() i:" << i << "number :" << number <<std::endl;
 }
 
 int main() {
@@ -41,6 +47,7 @@ int main() {
     for (int i = 0; i < 5; ++i) {
         threads.emplace_back(increment, i);
         threads.emplace_back(decrement, i);
+        threads.emplace_back(testPrint, i);
     }
 
     // 等待所有线程完成
